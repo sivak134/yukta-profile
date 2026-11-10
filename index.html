@@ -52,6 +52,7 @@
                 <li><a href="#love" class="nav-link">💘 Why I Love Her</a></li>
                 <li><a href="#graphs" class="nav-link">📈 Graphs</a></li>
                 <li><a href="#quiz" class="nav-link">🎮 Quiz</a></li>
+                <li><a href="#messages" class="nav-link">💬 Messages</a></li>
             </ul>
         </div>
     </nav>
@@ -489,6 +490,21 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Message Board Section -->
+    <section class="messages-section" id="messages">
+        <div class="container">
+            <h2 class="section-title-funny">💬 Leave a Message</h2>
+            <form class="message-form" id="messageForm">
+                <label for="messageName">Your name</label>
+                <input id="messageName" name="name" type="text" maxlength="60" required>
+                <label for="messageContent">Your message</label>
+                <textarea id="messageContent" name="message" rows="4" maxlength="500" required></textarea>
+                <button type="submit">Post Message 💌</button>
+            </form>
+            <ol class="message-list" id="messageList" aria-live="polite"></ol>
         </div>
     </section>
 

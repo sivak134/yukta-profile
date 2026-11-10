@@ -6,6 +6,7 @@ class HotHeadedWebsite {
         this.startAnimations();
         this.setupQuiz();
         this.setupInteractiveFeatures();
+        this.setupMessageForm();
     }
 
     init() {
@@ -512,6 +513,64 @@ class HotHeadedWebsite {
         this.setupStyleItems();
         this.setupPatienceScenarios();
         this.setupChartInteractions();
+    }
+
+    setupMessageForm() {
+        const messageForm = document.querySelector('#messageForm');
+        const messageList = document.querySelector('#messageList');
+
+        if (!messageForm || !messageList) return;
+
+        const storageKey = 'yuktaProfileMessages';
+        let savedMessages = [];
+
+        try {
+            const storedMessages = JSON.parse(localStorage.getItem(storageKey) || '[]');
+            if (Array.isArray(storedMessages)) {
+                savedMessages = storedMessages.filter(item =>
+                    item && typeof item.name === 'string' && typeof item.message === 'string'
+                );
+            }
+        } catch {
+            savedMessages = [];
+        }
+
+        const renderMessage = ({ name, message }, prepend = false) => {
+            const entry = document.createElement('li');
+            const author = document.createElement('strong');
+            const content = document.createElement('p');
+            author.textContent = name;
+            content.textContent = message;
+            entry.append(author, content);
+            if (prepend) {
+                messageList.prepend(entry);
+            } else {
+                messageList.append(entry);
+            }
+        };
+
+        savedMessages.forEach(message => renderMessage(message));
+
+        messageForm.addEventListener('submit', event => {
+            event.preventDefault();
+
+            const formData = new FormData(messageForm);
+            const name = formData.get('name').trim();
+            const message = formData.get('message').trim();
+            if (!name || !message) return;
+
+            const newMessage = { name, message };
+            savedMessages.unshift(newMessage);
+            renderMessage(newMessage, true);
+
+            try {
+                localStorage.setItem(storageKey, JSON.stringify(savedMessages));
+            } catch {
+                savedMessages.shift();
+            }
+
+            messageForm.reset();
+        });
     }
 
     setupLoveExplosion() {

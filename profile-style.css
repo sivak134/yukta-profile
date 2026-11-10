@@ -1608,6 +1608,90 @@ section {
 }
 
 /* Final Message Section */
+.messages-section {
+    padding: 5rem 0;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.message-form {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    padding: 2rem;
+    background: var(--white);
+    border: 3px solid var(--boyfriend-blue);
+    border-radius: var(--border-radius-fun);
+    box-shadow: var(--shadow-cute);
+    text-align: left;
+}
+
+.message-form label {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.message-form input,
+.message-form textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background-color: var(--white);
+    border: 2px solid #dfe6e9;
+    border-radius: 10px;
+    font: inherit;
+    color: var(--text-dark);
+}
+
+.message-form textarea {
+    resize: vertical;
+}
+
+.message-form input:focus,
+.message-form textarea:focus {
+    outline: 3px solid rgba(9, 132, 227, 0.2);
+    border-color: var(--boyfriend-blue);
+}
+
+.message-form button {
+    justify-self: start;
+    margin-top: 0.5rem;
+    padding: 0.8rem 1.25rem;
+    border: 0;
+    border-radius: 10px;
+    background: var(--boyfriend-blue);
+    color: var(--white);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.message-form button:hover {
+    background: var(--cool-blue);
+}
+
+.message-list {
+    display: grid;
+    gap: 1rem;
+    max-width: 640px;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    text-align: left;
+}
+
+.message-list li {
+    padding: 1rem 1.25rem;
+    background: var(--white);
+    border-left: 4px solid var(--sass-pink);
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+}
+
+.message-list strong {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--boyfriend-blue);
+}
+
 .final-message {
     background: var(--love-gradient);
     padding: 5rem 0;
